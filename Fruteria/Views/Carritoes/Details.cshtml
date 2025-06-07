@@ -1,0 +1,50 @@
+﻿@model LogicaBiblioteca.Modelos.Carrito
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Carrito</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.idCarrito)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idCarrito)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NombreProducto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NombreProducto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CantidadCompra)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CantidadCompra)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.totalProductos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.totalProductos)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idProducto }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

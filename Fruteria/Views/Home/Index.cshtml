@@ -1,0 +1,36 @@
+﻿@model Fruteria_vgarcia.ViewModels.ProductosViewModel
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<main>
+    <section class="row" aria-labelledby="aspnetTitle">
+        <h1 id="title">Fruitis</h1>
+        <p class="lead">Todas las frutas frescas a buen precio</p>
+
+    </section>
+    <hr />
+    <div class="row">
+        <section class="col-md-4" aria-labelledby="gettingStartedTitle">
+            <h4 id="gettingStartedTitle">Frutas Tropicales</h4>
+            <p>
+                <a href="@Url.Action("VerCategorias", "Productos", new {Categoria=0})"><img width="240" src="~/Content/Imagenes/tropical.jpg" /></a><!--Pasar una interrogante, Buscar como pasarle una variable para llamar al controlador-->
+              
+            </p>
+        </section>
+
+        <section class="col-md-4" aria-labelledby="librariesTitle">
+            <h4 id="librariesTitle">Fruta de Origen Nacional</h4>
+            <p>
+                <a href="@Url.Action("VerCategorias", "Productos", new {Categoria=1})"><img width="180" src="~/Content/Imagenes/platanos.jpg"></a>
+            </p>
+
+        </section>
+        <section class="col-md-4" aria-labelledby="hostingTitle">
+            <h4 id="hostingTitle">Fruta de Temporada</h4>
+            <p>
+                <a href="@Url.Action("VerCategorias", "Productos", new {Categoria=2})"><img width="230" src="~/Content/Imagenes/naranjas.jpg" /></a>
+            </p>
+        </section>
+    </div>
+</main>
