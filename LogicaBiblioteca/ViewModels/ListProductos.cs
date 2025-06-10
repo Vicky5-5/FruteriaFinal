@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Fruteria_vgarcia.ViewModels
+namespace Fruteria.ViewModels
 {
     public class ListProductos
     {

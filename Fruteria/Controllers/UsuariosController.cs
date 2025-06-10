@@ -1,4 +1,4 @@
-﻿using Fruteria_vgarcia.ViewModels;
+﻿using Fruteria.ViewModels;
 using LogicaBiblioteca.Managers;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Net.Mail;
 using System.Web.Configuration;
 using System.Web.Mvc;
 
-namespace Fruteria_vgarcia.Controllers
+namespace Fruteria.Controllers
 {
     public class UsuariosController : Controller
     {

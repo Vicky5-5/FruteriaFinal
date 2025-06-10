@@ -3,7 +3,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using Fruteria;
 
-namespace Fruteria_vgarcia
+namespace Fruteria
 {
     public class MvcApplication : System.Web.HttpApplication
     {

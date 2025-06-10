@@ -1,12 +1,12 @@
-﻿using Fruteria_vgarcia.ViewModels;
+﻿using Fruteria.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Web;
 using System.Web.Mvc;
-using Categoria = Fruteria_vgarcia.ViewModels.Categoria; //Para ver por categorias al pinchar en una imagen
+using Categoria = Fruteria.ViewModels.Categoria; //Para ver por categorias al pinchar en una imagen
 
-namespace Fruteria_vgarcia.Controllers
+namespace Fruteria.Controllers
 {
     //QUITAR USING Y NO ACCEDER A LA BASE DE DATOS EN EL CONTROLLER BAJO NINGUN CONCEPTO
     public class ProductosController : Controller

@@ -2,7 +2,7 @@
 using LogicaBiblioteca.Modelos;
 using System.Collections.Generic;
 
-namespace Fruteria_vgarcia.ViewModels
+namespace Fruteria.ViewModels
 {
     public class CarritoViewModel
     {

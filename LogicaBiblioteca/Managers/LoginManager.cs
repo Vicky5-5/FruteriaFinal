@@ -1,16 +1,17 @@
-﻿using Fruteria_vgarcia.ViewModels;
+﻿using System;
+using System.Web;
+using Fruteria.ViewModels;
 using LogicaBiblioteca.Managers;
 using LogicaBiblioteca.Modelos;
-using System;
-using System.Web;
-using System.Web.UI;
 
 public sealed class LoginManager
 {
     private static LoginManager instance = null;
     private string currentUser;
+    private bool bloqueo = false;
+    private DateTime? tiempoBloqueo = null;
 
-    LoginManager()
+    private LoginManager()
     {
         // Constructor privado para evitar instanciación externa
     }
@@ -27,37 +28,46 @@ public sealed class LoginManager
         }
     }
 
-    public bool Login(string email, string password, UsuariosViewModel entrar)
+    public Usuario Login(string email, string password)
     {
-        var info = UsuariosViewModel.GetUsuario(entrar.idUsuario);
-        DateTime dateTime = DateTime.Now;
-        bool bloqueo = false;
-        var login = UserManager.Login(email,password);
-        var hash = UserManager.HashPassword(password);
-        int cuenta = 0;
-        int contador = 0;
-        if (hash == login.Password && email == login.Email && login.Estado == true && /*HttpContext.Current.Session["Usuario"] != null &&*/ bloqueo == false)
-        {
-            currentUser = info.Nombre;
-            HttpContext.Current.Session["Bienvenida"] = "Bienvenido/a: " + info.Nombre;
-            return true;
+        if (string.IsNullOrEmpty(email)||string.IsNullOrEmpty(password)) {
+            HttpContext.Current.Session["Fallido"] = "faltan datos por insertar"; // Reinicia intentos
         }
-        else if (hash != login.Password || login.Email != email)
-        {
-            bloqueo = false;
-            cuenta = contador++;
-            HttpContext.Current.Session["Incorrecto"] = "La contraseña o el email están incorrectos. Inténtalo de nuevo";
 
-            throw new System.Exception("La contraseña o el email están incorrectos. Inténtalo de nuevo");
-        }
-        if (cuenta > 3)
+        if (bloqueo && tiempoBloqueo.HasValue && DateTime.Now < tiempoBloqueo.Value)
         {
-            HttpContext.Current.Session["Mensaje"] = "Se ha superado el número de intentos (3). Inténtelo de nuevo en 10 minutos";
-            HttpContext.Current.Session["Bloqueado"] = dateTime.AddMinutes(10);
-            bloqueo = true;
-            
+            HttpContext.Current.Session["Mensaje"] = "Cuenta bloqueada. Inténtelo nuevamente después de 10 minutos.";
         }
-        return false;
+        var login = UserManager.Login(email, password);
+        var hash = UserManager.HashPassword(password);
+
+        //Alamacenamos los intentos de inicio de sesión
+        int intentosFallidos = (int)(HttpContext.Current.Session["IntentosFallidos"] ?? 0);
+        if (login == null)
+        {
+            HttpContext.Current.Session["MensajeError"] = "Error. Usuario o contraseña incorrecto.";
+            return null;
+        }
+        if (hash == login.Password && email == login.Email && login.Estado)
+        {
+            currentUser = login.Nombre;
+            HttpContext.Current.Session["Bienvenida"] = "Bienvenido/a:" + login.Nombre;
+            HttpContext.Current.Session["IntentosFallidos"] = 0; // Reinicia intentos
+        }
+        else
+        {
+            intentosFallidos++;
+            HttpContext.Current.Session["Incorrecto"] = "La contraseña o el email están incorrectos. Inténtalo de nuevo.";
+            HttpContext.Current.Session["IntentosFallidos"] = intentosFallidos;
+        }
+
+        if (intentosFallidos >= 3)
+        {
+            bloqueo = true;
+            tiempoBloqueo = DateTime.Now.AddMinutes(10);
+            HttpContext.Current.Session["Mensaje"] = "Se ha superado el número de intentos. Inténtelo de nuevo en 10 minutos.";
+        }
+        return login;
     }
 
     public string GetCurrentUser()

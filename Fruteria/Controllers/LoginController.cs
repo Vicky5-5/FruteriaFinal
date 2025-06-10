@@ -1,5 +1,5 @@
 ﻿
-using Fruteria_vgarcia.ViewModels;
+using Fruteria.ViewModels;
 using LogicaBiblioteca.Contexto;
 using LogicaBiblioteca.Modelos;
 using System;
@@ -8,7 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Services.Description;
 
-namespace Fruteria_vgarcia.Controllers
+namespace Fruteria.Controllers
 {
     public class LoginController : Controller
     {
@@ -30,9 +30,10 @@ namespace Fruteria_vgarcia.Controllers
         public ActionResult Entrar(string email, string password, UsuariosViewModel entrar)
         {
             LoginManager loginManager = LoginManager.Instance;
-            if (loginManager.Login(email, password, entrar))
+            var usuario = loginManager.Login(email, password);
+            if (usuario != null)
             {
-                if (entrar.Administrador)
+                if (usuario.Administrador==true)
                 {
 
                     HttpCookie cookie = new HttpCookie("Nombre", entrar.Nombre); // Para sustituir el Temp Data

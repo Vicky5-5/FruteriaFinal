@@ -1,7 +1,7 @@
 ﻿using LogicaBiblioteca.Logica;
 using System.Web.Mvc;
 
-namespace Fruteria_vgarcia.Controllers
+namespace Fruteria.Controllers
 {
     public class CarritoesController : Controller
     {

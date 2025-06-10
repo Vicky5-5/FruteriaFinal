@@ -1,11 +1,11 @@
-﻿using Fruteria_vgarcia.ViewModels;
+﻿using Fruteria.ViewModels;
 using LogicaBiblioteca.Contexto;
 using LogicaBiblioteca.Modelos;
 using System.Collections.Generic;
 using System.Net;
 using System.Web.Mvc;
 
-namespace Fruteria_vgarcia.Controllers
+namespace Fruteria.Controllers
 {
     public class DetallesPedidosController : Controller
     {

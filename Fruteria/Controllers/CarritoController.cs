@@ -1,9 +1,9 @@
 ﻿
-using Fruteria_vgarcia.ViewModels;
+using Fruteria.ViewModels;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
-namespace Fruteria_vgarcia.Controllers
+namespace Fruteria.Controllers
 {
     public class CarritoController : Controller
     {

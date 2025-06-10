@@ -6,7 +6,7 @@ using System.Linq;
 using System.Web;
 using LogicaBiblioteca.Modelos;
 
-namespace Fruteria_vgarcia.ViewModels
+namespace Fruteria.ViewModels
 {
     public class DetallesPedidosViewModel
     {
