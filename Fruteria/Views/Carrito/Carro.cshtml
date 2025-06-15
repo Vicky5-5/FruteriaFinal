@@ -5,73 +5,50 @@
 }
 
 <h2>Carro</h2>
+<strong>Usuario</strong>: @LoginManager.Instance.GetCurrentUser()
 
-<table class="table">
-    <thead>
-        <tr>
-
-            <th>
-                Nombre del Producto
-            </th>
-            <th>
-                Precio
-            </th>
-
-            <th>
-                Descripción
-            </th>
-
-            <th>
-                Imagen
-            </th>
-            <th>
-                Cantidad
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @*@foreach (var item in Model)
+@if (Model == null || !Model.Any())
+{
+    <h1>No hay productos en el carrito.</h1>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
             {
                 <tr>
+                    <td>@Html.DisplayFor(modelItem => item.oProducto.NombreProducto)</td>
+                    <td>@Html.DisplayFor(modelItem => item.oProducto.Precio)</td>
+                    <td>@Html.DisplayFor(modelItem => item.CantidadCompra)</td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.oProductos.NombreProducto)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.oProductos.Precio)
-                    </td>
-
-                    <td>
-                        @Html.DisplayFor(modelItem => item.oProductos.Descripcion)
-                    </td>
-
-                    <td>
-                        <img src="@item.oProductos.ImagenProductos" width="100" height="100" alt="Imagen del producto" />
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CantidadCompra)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Añadir Más", "AddToCart", "Carrito")
+                        @Html.ActionLink("Añadir Más", "AddToCart", "Carrito", new { idProducto = item.idProducto }, null)
+                        @Html.ActionLink("Eliminar", "RemoveFromCart", "Carrito", new { idProducto = item.idProducto }, null)
                     </td>
                 </tr>
-            }*@
+            }
+        </tbody>
+    </table>
 
-    </tbody>
-
-</table>
-<div class="row" id="fila">
-    <div class="form-group col-md-6">
-        <div class="col-md-offset-2 col-md-10">
-            <input id="boton" type="submit" value="Comprar" class="btn btn-default" /> @*Hacer que se guarde en pedido*@
+    <div class="row">
+        <div class="col-md-6">
+            <form method="post" action="@Url.Action("Comprar", "Carrito")">
+                <button id="boton" type="submit" class="btn btn-default">Comprar</button>
+            </form>
+        </div>
+        <div class="col-md-6">
+            @Html.ActionLink("Volver", "Index", "Home", null, new { @class = "btn btn-secondary" })
         </div>
     </div>
-    <br />
-
-    <div class="col-md-6">
-        @Html.ActionLink("Volver", "Index")
-    </div>
-</div>
+}
 
 <style>
     #boton {

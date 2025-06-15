@@ -1,42 +1,28 @@
-﻿
+﻿using System.Web.Mvc;
 using Fruteria.ViewModels;
-using System.Collections.Generic;
-using System.Web.Mvc;
+using LogicaBiblioteca.Managers;
 
 namespace Fruteria.Controllers
 {
     public class CarritoController : Controller
     {
-        // GET: Carrito
         public ActionResult Index()
         {
-            List<ProductosViewModel> lista = new List<ProductosViewModel>();
-
-            lista = CarritoViewModel.Catalogo();
-            return View(lista);
+            var carrito = ProductosViewModel.ListProductos();
+            return View(carrito);
         }
-        public ActionResult Carro()
+
+        public ActionResult AddToCart(int idProducto)
         {
-            return View();
-        }
-        //Añadimos al carro
-        public ActionResult AddToCart(int id)
-        {
-            //using (var db = new FruteriaContext())
-            //{
-            //    // Retrieve the album from the database
-            //    var prod = db.Productos
-            //        .Single(p => p.idProducto == id);
-
-            //    // Add it to the shopping cart
-            //    var cart = LogicaCarrito.GetCarrito(this.HttpContext);
-
-            //    cart.AddCart(prod);
-
-            // Vueleve al Index
+            ProductosViewModel producto = new ProductosViewModel { idProducto = idProducto };
+            CarritoViewModel carrito = new CarritoViewModel(CarritoManager.AddCart(producto));
             return RedirectToAction("Index");
-
         }
 
+        public ActionResult RemoveFromCart(int idProducto)
+        {
+            CarritoManager.RemoveProductFromCart(idProducto);
+            return RedirectToAction("Index");
+        }
     }
 }
