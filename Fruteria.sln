@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36121.58
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fruteria", "Fruteria\Fruteria.csproj", "{E2A3B1E6-2979-403B-AAA9-16E9634C6480}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FruteriaFront", "Fruteria\FruteriaFront.csproj", "{E2A3B1E6-2979-403B-AAA9-16E9634C6480}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicaBiblioteca", "LogicaBiblioteca\LogicaBiblioteca.csproj", "{3EBCF174-B285-42D5-A51B-D25ACB09C60F}"
 EndProject

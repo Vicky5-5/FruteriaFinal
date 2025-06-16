@@ -16,11 +16,11 @@ namespace LogicaBiblioteca.Managers
             }
         }
 
-        public static Carrito AddCart(ProductosViewModel productos)
+        public static Carrito AddCart(ProductosViewModel productos, UsuariosViewModel usuario)
         {
             using (var db = new FruteriaContext())
             {
-                var carro = db.Carrito.SingleOrDefault(c => c.idProducto == productos.idProducto);
+                var carro = db.Carrito.SingleOrDefault(c => c.idProducto == productos.idProducto && c.idUsuario == usuario.idUsuario);
 
                 if (carro == null)
                 {

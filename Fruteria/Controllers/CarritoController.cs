@@ -11,12 +11,18 @@ namespace Fruteria.Controllers
             var carrito = ProductosViewModel.ListProductos();
             return View(carrito);
         }
-
-        public ActionResult AddToCart(int idProducto)
+        [HttpGet]
+        public ActionResult AddToCart()
         {
-            ProductosViewModel producto = new ProductosViewModel { idProducto = idProducto };
-            CarritoViewModel carrito = new CarritoViewModel(CarritoManager.AddCart(producto));
-            return RedirectToAction("Index");
+            return View();
+
+        }
+        [HttpPost]
+        public ActionResult AddToCart(ProductosViewModel producto)
+        {
+
+           // CarritoManager.AddCart(producto);
+            return RedirectToAction("Carro");
         }
 
         public ActionResult RemoveFromCart(int idProducto)

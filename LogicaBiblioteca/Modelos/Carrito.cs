@@ -14,7 +14,7 @@ namespace LogicaBiblioteca.Modelos
         [Key]
         public int idProducto { get; set; }
         public int idCarrito { get; set; }
-
+        public int idUsuario { get; set; }
         public string NombreProducto { get; set; }
         public int CantidadCompra { get; set; } = 0;
         public decimal totalProductos { get; set; } //Precio con la oferta
