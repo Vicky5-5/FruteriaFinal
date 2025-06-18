@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class idUsuarioCarrito : DbMigration
+    public partial class idCarrCarritoEliminaod : DbMigration
     {
         public override void Up()
         {
@@ -17,7 +17,6 @@
                         NombreProducto = c.String(),
                         CantidadCompra = c.Int(nullable: false),
                         totalProductos = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        idCarr = c.Int(nullable: false),
                         oProducto_idProducto = c.Int(),
                     })
                 .PrimaryKey(t => t.idProducto)

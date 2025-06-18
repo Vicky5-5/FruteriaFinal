@@ -18,10 +18,11 @@ namespace Fruteria.Controllers
 
         }
         [HttpPost]
-        public ActionResult AddToCart(ProductosViewModel producto)
+        public ActionResult AddToCart(int idProducto, int idusuario)
         {
-
-           // CarritoManager.AddCart(producto);
+            if (HttpContext.Session["Carro"] != null) { 
+            CarritoManager.AddCart(idProducto, idusuario);
+            }
             return RedirectToAction("Carro");
         }
 

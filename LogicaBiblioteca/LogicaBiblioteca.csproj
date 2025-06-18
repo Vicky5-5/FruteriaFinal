@@ -176,9 +176,9 @@
     <Compile Include="Managers\LoginManager.cs" />
     <Compile Include="Managers\ProductosManager.cs" />
     <Compile Include="Managers\UserManager.cs" />
-    <Compile Include="Migrations\202506161122449_idUsuarioCarrito.cs" />
-    <Compile Include="Migrations\202506161122449_idUsuarioCarrito.Designer.cs">
-      <DependentUpon>202506161122449_idUsuarioCarrito.cs</DependentUpon>
+    <Compile Include="Migrations\202506161404001_idCarrCarritoEliminaod.cs" />
+    <Compile Include="Migrations\202506161404001_idCarrCarritoEliminaod.Designer.cs">
+      <DependentUpon>202506161404001_idCarrCarritoEliminaod.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Modelos\Carrito.cs" />
@@ -199,8 +199,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202506161122449_idUsuarioCarrito.resx">
-      <DependentUpon>202506161122449_idUsuarioCarrito.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202506161404001_idCarrCarritoEliminaod.resx">
+      <DependentUpon>202506161404001_idCarrCarritoEliminaod.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -34,7 +34,7 @@ namespace LogicaBiblioteca.Modelos
 
         [Required]
         [DataType(DataType.Date)]
-        public DateTime FechaRegistro { get; set; }
+        public DateTime FechaRegistro { get; private set; } // El Private para que solo sea de lectura y no se pueda editar
 
         [DataType(DataType.Date)]
 
@@ -45,6 +45,13 @@ namespace LogicaBiblioteca.Modelos
         public ICollection<Productos> Productos { get; set; }
         #endregion
 
-       
+
+        public Usuario()
+        {
+            FechaRegistro = DateTime.Now; // Asigna la fecha actual al crear el usuario
+        }
     }
+
+
+
 }

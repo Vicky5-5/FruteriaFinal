@@ -156,8 +156,9 @@ namespace Fruteria.Controllers
                 {
 
                     var model = UsuariosViewModel.AddUsuario(usu.idUsuario, usu.Nombre, usu.Email, usu.Password, usu.Estado, usu.FechaRegistro, usu.FechaBaja, usu.Direccion, usu.Administrador);
+                    return RedirectToAction("Index");
 
-                    EnviarCorreoBienvenida(model.Email);
+                    //EnviarCorreoBienvenida(model.Email);
                 }
                 catch (Exception ex)
                 {
@@ -194,7 +195,7 @@ namespace Fruteria.Controllers
                     //Si el usuario se da de baja que envíe otro correo
                     if (model.Estado == false)
                     {
-                        EnviarCorreoBaja(model.Email);
+                       // EnviarCorreoBaja(model.Email);
                         return RedirectToAction("Index");
 
                     }

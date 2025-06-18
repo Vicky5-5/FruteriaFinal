@@ -65,7 +65,6 @@ namespace LogicaBiblioteca.Managers
                     usuario.Email = email;
                     usuario.Password = pEncript;
                     usuario.Estado = estado;
-                    usuario.FechaRegistro = fechaRegistro; //Hace que se guarde el anterior
                     usuario.FechaBaja = fechaBaja;
                     usuario.Direccion = direccion;
                     usuario.Administrador = administrador;
@@ -83,7 +82,6 @@ namespace LogicaBiblioteca.Managers
                     Email = email,
                     Password = pEncript,
                     Estado = true,
-                    FechaRegistro = DateTime.Now,
                     FechaBaja = null,
                     Direccion = direccion,
                     Administrador = administrador
@@ -185,7 +183,6 @@ namespace LogicaBiblioteca.Managers
                     Email = email,
                     Password = pEncript,
                     Estado = true,
-                    FechaRegistro = DateTime.Now,
                     FechaBaja = null,
                     Direccion = direccion,
                     Administrador = false

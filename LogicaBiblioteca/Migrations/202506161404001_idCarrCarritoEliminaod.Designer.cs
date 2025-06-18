@@ -7,13 +7,13 @@ namespace LogicaBiblioteca.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.5.1")]
-    public sealed partial class idUsuarioCarrito : IMigrationMetadata
+    public sealed partial class idCarrCarritoEliminaod : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(idUsuarioCarrito));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(idCarrCarritoEliminaod));
         
         string IMigrationMetadata.Id
         {
-            get { return "202506161122449_idUsuarioCarrito"; }
+            get { return "202506161404001_idCarrCarritoEliminaod"; }
         }
         
         string IMigrationMetadata.Source
