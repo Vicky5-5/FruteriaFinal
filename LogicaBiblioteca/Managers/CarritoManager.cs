@@ -19,31 +19,45 @@ namespace LogicaBiblioteca.Managers
             }
         }
 
-        public static Carrito AddCart(int idProducto, int idUsuario)
+        public static Carrito AddCart(int idProducto, int idUsuario, int cantidad)
         {
-            if (idProducto == 0)
-            {
-                HttpContext.Current.Session["NoProductos"] = "No hay productos";
-            }
-            if (idUsuario == 0)
-            {
-                HttpContext.Current.Session["NoUsuario"] = "No hay usuario";
-            }
+            if (idProducto <= 0 || idUsuario <= 0 || cantidad <= 0)
+                throw new ArgumentException("Parámetros inválidos.");
+
             using (var db = new FruteriaContext())
             {
-                //var carrito = Session.GetObject<Carrito>("Carrito") ?? new Carrito();
+                //var producto = db.Productos.FirstOrDefault(p => p.idProducto == idProducto);
+                var producto = ProductosManager.ObtenerProducto(idProducto);
+                if (producto == null)
+                    throw new Exception("Producto no encontrado.");
 
-                var carro = db.Carrito.FirstOrDefault(c => c.idProducto == idProducto && c.idUsuario == idUsuario)
-            ?? new Carrito { idProducto = idProducto, idUsuario = idUsuario, CantidadCompra = 0 };
+                if (producto.Stock < cantidad)
+                    throw new Exception("Stock insuficiente.");
 
-                carro.CantidadCompra++;
-                if (carro.idCarrito == 0) db.Carrito.Add(carro); // Solo agregar si es nuevo
+                // Descontar del stock real
+                producto.Stock -= cantidad;
+
+                var carro = db.Carrito.FirstOrDefault(c => c.idProducto == idProducto && c.idUsuario == idUsuario);
+                if (carro == null)
+                {
+                    carro = new Carrito
+                    {
+                        idProducto = idProducto,
+                        idUsuario = idUsuario,
+                        CantidadCompra = cantidad
+                    };
+                    db.Carrito.Add(carro);
+                }
+                else
+                {
+                    carro.CantidadCompra += cantidad;
+                }
 
                 db.SaveChanges();
                 return carro;
-
             }
         }
+
 
 
         public static void RemoveProductFromCart(int id)

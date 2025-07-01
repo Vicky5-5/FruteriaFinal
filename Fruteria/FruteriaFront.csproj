@@ -130,7 +130,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CarritoController.cs" />
-    <Compile Include="Controllers\CarritoesController.cs" />
     <Compile Include="Controllers\DetallesPedidosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -211,11 +210,6 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Carritoes\Create.cshtml" />
-    <Content Include="Views\Carritoes\Delete.cshtml" />
-    <Content Include="Views\Carritoes\Details.cshtml" />
-    <Content Include="Views\Carritoes\Edit.cshtml" />
-    <Content Include="Views\Carritoes\Index.cshtml" />
     <Content Include="Views\Carrito\Carro.cshtml" />
     <Content Include="Views\Carrito\Index.cshtml" />
     <Content Include="Views\Carrito\ListaCompras.cshtml" />
@@ -234,7 +228,6 @@
     <Content Include="Views\Usuarios\Details.cshtml" />
     <Content Include="Views\Usuarios\Edit.cshtml" />
     <Content Include="Views\Usuarios\Index.cshtml" />
-    <Content Include="Views\Carrito\AddToCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

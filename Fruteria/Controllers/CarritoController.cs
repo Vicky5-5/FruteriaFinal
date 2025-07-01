@@ -1,6 +1,9 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Web.Mvc;
 using Fruteria.ViewModels;
 using LogicaBiblioteca.Managers;
+using LogicaBiblioteca.Modelos;
 
 namespace Fruteria.Controllers
 {
@@ -12,19 +15,27 @@ namespace Fruteria.Controllers
             return View(carrito);
         }
         [HttpGet]
-        public ActionResult AddToCart()
+        public ActionResult ListaCompras()
         {
             return View();
 
         }
         [HttpPost]
-        public ActionResult AddToCart(int idProducto, int idusuario)
+        public ActionResult ListaCompras(int idProducto, int idUsuario, int cantidad)
         {
-            if (HttpContext.Session["Carro"] != null) { 
-            CarritoManager.AddCart(idProducto, idusuario);
+            var nuevoItem = CarritoManager.AddCart(idProducto, idUsuario, cantidad);
+
+            if (HttpContext.Session["Carro"] == null)
+            {
+                var carritoSesion = HttpContext.Session["Carro"] as List<Carrito> ?? new List<Carrito>();
+                carritoSesion.Add(nuevoItem);
+                HttpContext.Session["Carro"] = carritoSesion;
             }
-            return RedirectToAction("Carro");
+            var productos = ProductosManager.ListarProductos(); // retorna List<Productos>
+
+            return View(productos);
         }
+
 
         public ActionResult RemoveFromCart(int idProducto)
         {

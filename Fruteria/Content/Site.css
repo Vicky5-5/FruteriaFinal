@@ -18,3 +18,16 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.navbar {
+    background-color: #28a745 !important; /* verde */
+}
+
+.navbar-brand,
+.navbar .nav-link {
+        color: #ffffff !important;
+    }
+
+        .navbar .nav-link:hover {
+            color: #d4d4d4 !important;
+        }
