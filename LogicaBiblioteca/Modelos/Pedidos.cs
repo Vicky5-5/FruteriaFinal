@@ -16,7 +16,6 @@ namespace LogicaBiblioteca.Modelos
         public DateTime FechaEstimadaEntrega { get; set; }
         public bool EstadoPedido { get; set; }
         public decimal Total { get; set; }
-        public Productos oProductos { get; set; }
         public List<DetallesPedidos> DetallesPedidos { get; set; }
 
         //public int CrearPedido(DetallesPedidos detalle)

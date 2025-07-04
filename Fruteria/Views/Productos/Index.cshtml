@@ -3,11 +3,12 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var usuario = LoginManager.Instance.GetCurrentUser();
 
 }
 
 <h2>Productos</h2>
-<p><strong>Bienvenido/a</strong>: @LoginManager.Instance.GetCurrentUser()</p>
+<h6><strong>Usuario:</strong> @(usuario?.Nombre ?? "Invitado")</h6>
 
 <a href="@Url.Action("Create")" class="btn-crear-producto">
     <i class="fas fa-plus"></i>
@@ -110,9 +111,9 @@
 </table>
 
 <a href="@Url.Action("LogOut", "Login")" id="logOut">
-    
+
     <i class="fas fa-sign-out-alt"></i> Log out
-    
+
 </a>
 <style>
     #boton {
@@ -181,6 +182,7 @@
             background-color: #218838;
             color: white;
         }
+
     #logOut {
         display: inline-block;
         padding: 10px 16px;

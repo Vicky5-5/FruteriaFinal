@@ -10,7 +10,7 @@ namespace LogicaBiblioteca.Modelos
 {
     public class DetallesPedidos
     {
-        [Key, Column(Order =1)]
+        [Key, Column(Order = 1)]
         public int idPedido { get; set; }
         [Key, Column(Order = 2)]
         public int idProducto { get; set; }
@@ -21,16 +21,10 @@ namespace LogicaBiblioteca.Modelos
 
         [NotMapped] //Esto sirve para que no lo ponga en las migraciones de la base de datos
         public virtual Productos Productos { get; set; }
-        [NotMapped]
+
         public virtual Pedidos Pedidos { get; set; }
 
-        public List<DetallesPedidos> ListarDetallesPedidos()
-        {
-            using (var db = new FruteriaContext()) { 
-            List<DetallesPedidos> productos = db.DetallesPedidos.ToList();
-            return productos;
-            }
-        }
+        
 
     }
 }

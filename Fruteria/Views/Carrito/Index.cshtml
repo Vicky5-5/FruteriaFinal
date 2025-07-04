@@ -2,12 +2,13 @@
 
 @{
     ViewBag.Title = "Index";
+    var usuario = LoginManager.Instance.GetCurrentUser();
 }
+<!--HACER AQUÍ UNA OPCIÓN PARA HACER LOGOUT-->
 
-<!-- Opción para logout -->
 <h2>Realizando Compra</h2>
 <p>
-    <h6><strong>Usuario:</strong> @LoginManager.Instance.GetCurrentUser()</h6>
+    <h6><strong>Usuario:</strong> @(usuario?.Nombre ?? "Invitado")</h6>
 </p>
 
 <h2>CATÁLOGO</h2>
@@ -50,7 +51,12 @@ else
                             <img src="@item.ImagenURL" width="100" height="100" alt="Imagen del producto" />
                         </td>
                         <td>
-                            @Html.ActionLink("Añadir Carrito", "ListaCompras", "Carrito", new { idProducto = item.idProducto }, null)
+                            @Html.ActionLink("Añadir al Carrito", "ListaCompras", "Carrito", new
+                            {
+                                idProducto = item.idProducto,
+                                idUsuario = usuario?.idUsuario ?? 0, // Usa 0 como fallback
+                                cantidad = 1
+                            }, null)
                         </td>
                     </tr>
                 }
@@ -58,9 +64,6 @@ else
         </table>
     </div>
 }
-
-<!-- Botón de cierre de sesión -->
-@Html.ActionLink("Log Out", "LogOut", "Login", null, new { @class = "btn btn-danger" })
 
 <style>
     .btn-danger {

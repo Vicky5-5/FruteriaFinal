@@ -10,12 +10,13 @@ public sealed class LoginManager
     private string currentUser;
     private bool bloqueo = false;
     private DateTime? tiempoBloqueo = null;
+    private Usuario usuarioActual;
 
     private LoginManager()
     {
         // Constructor privado para evitar instanciación externa
     }
-
+    //0123456789
     public static LoginManager Instance
     {
         get
@@ -30,7 +31,8 @@ public sealed class LoginManager
 
     public Usuario Login(string email, string password)
     {
-        if (string.IsNullOrEmpty(email)||string.IsNullOrEmpty(password)) {
+        if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
+        {
             HttpContext.Current.Session["Fallido"] = "faltan datos por insertar"; // Reinicia intentos
         }
 
@@ -50,10 +52,13 @@ public sealed class LoginManager
         }
         if (hash == login.Password && email == login.Email && login.Estado)
         {
+            usuarioActual = login;
             currentUser = login.Nombre;
+            HttpContext.Current.Session["UsuarioActual"] = login;
             HttpContext.Current.Session["Bienvenida"] = "Bienvenido/a:" + login.Nombre;
-            HttpContext.Current.Session["IntentosFallidos"] = 0; // Reinicia intentos
+            HttpContext.Current.Session["IntentosFallidos"] = 0;
         }
+
         else
         {
             intentosFallidos++;
@@ -70,8 +75,16 @@ public sealed class LoginManager
         return login;
     }
 
-    public string GetCurrentUser()
+    public Usuario GetCurrentUser()
     {
-        return currentUser;
+        return HttpContext.Current.Session["UsuarioActual"] as Usuario;
     }
+
+    public void LogOut()
+    {
+        usuarioActual = null;
+        currentUser = null;
+        HttpContext.Current.Session["UsuarioActual"] = null;
+    }
+
 }

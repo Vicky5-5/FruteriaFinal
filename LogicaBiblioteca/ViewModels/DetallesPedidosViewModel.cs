@@ -17,28 +17,27 @@ namespace Fruteria.ViewModels
         public decimal Oferta { get; set; }
         public decimal PrecioTotal { get; set; }
 
-        public List<DetallesPedidosViewModel> ListTodosProductos()
-        {
+        //public List<DetallesPedidosViewModel> ListTodosProductos()
+        //{
 
-            DetallesPedidos producto = new DetallesPedidos();
-            var listar = producto.ListarDetallesPedidos();
-            List<DetallesPedidosViewModel> lista = new List<DetallesPedidosViewModel>();
-            foreach (var item in listar)
-            {
-                DetallesPedidosViewModel model = new DetallesPedidosViewModel();
-                model.idPedido = item.idPedido;
-                model.idProducto = item.idProducto;
-                model.Cantidad = item.Cantidad;
-                model.Precio = item.Precio;               
-                model.Oferta = item.Oferta;
-                model.PrecioTotal = item.PrecioTotal;
+        //    var listar = DetallesPedidosManager.ListarDetallesPedidos();
+        //    List<DetallesPedidosViewModel> lista = new List<DetallesPedidosViewModel>();
+        //    foreach (var item in listar)
+        //    {
+        //        DetallesPedidosViewModel model = new DetallesPedidosViewModel();
+        //        model.idPedido = item.idPedido;
+        //        model.idProducto = item.idProducto;
+        //        model.Cantidad = item.Cantidad;
+        //        model.Precio = item.Precio;               
+        //        model.Oferta = item.Oferta;
+        //        model.PrecioTotal = item.PrecioTotal;
 
-                lista.Add(model);
+        //        lista.Add(model);
 
-            }
-            return lista;
+        //    }
+        //    return lista;
 
-        }
+        //}
 
     }
 }

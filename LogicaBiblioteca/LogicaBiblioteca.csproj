@@ -173,12 +173,22 @@
     <Compile Include="Logica\EnumCategoria.cs" />
     <Compile Include="Logica\LogicaCarrito.cs" />
     <Compile Include="Managers\CarritoManager.cs" />
+    <Compile Include="Managers\DetallesPedidosManager.cs" />
     <Compile Include="Managers\LoginManager.cs" />
+    <Compile Include="Managers\PedidosManager.cs" />
     <Compile Include="Managers\ProductosManager.cs" />
     <Compile Include="Managers\UserManager.cs" />
     <Compile Include="Migrations\202506161404001_idCarrCarritoEliminaod.cs" />
     <Compile Include="Migrations\202506161404001_idCarrCarritoEliminaod.Designer.cs">
       <DependentUpon>202506161404001_idCarrCarritoEliminaod.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202507031453382_actualizacion.cs" />
+    <Compile Include="Migrations\202507031453382_actualizacion.Designer.cs">
+      <DependentUpon>202507031453382_actualizacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202507041601584_CorregirRelacionCarrito.cs" />
+    <Compile Include="Migrations\202507041601584_CorregirRelacionCarrito.Designer.cs">
+      <DependentUpon>202507041601584_CorregirRelacionCarrito.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Modelos\Carrito.cs" />
@@ -191,6 +201,7 @@
     <Compile Include="ViewModels\CarritoViewModel.cs" />
     <Compile Include="ViewModels\DetallesPedidosViewModel.cs" />
     <Compile Include="ViewModels\ListProductos.cs" />
+    <Compile Include="ViewModels\PedidosViewModel.cs" />
     <Compile Include="ViewModels\ProductosViewModel.cs" />
     <Compile Include="ViewModels\UsuariosViewModel.cs" />
   </ItemGroup>
@@ -201,6 +212,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202506161404001_idCarrCarritoEliminaod.resx">
       <DependentUpon>202506161404001_idCarrCarritoEliminaod.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202507031453382_actualizacion.resx">
+      <DependentUpon>202507031453382_actualizacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202507041601584_CorregirRelacionCarrito.resx">
+      <DependentUpon>202507041601584_CorregirRelacionCarrito.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
